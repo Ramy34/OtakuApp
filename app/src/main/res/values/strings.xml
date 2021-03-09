@@ -3,4 +3,6 @@
     <string name="manga">manga</string>
     <string name="TAG">MANGA</string>
     <string name="baseURL">https://kitsu.io/api/edge/</string>
+    <string name="image_url">https://media.kitsu.io/manga/poster_images/</string>
+    <string name="jpg">/tiny.jpg</string>
 </resources>

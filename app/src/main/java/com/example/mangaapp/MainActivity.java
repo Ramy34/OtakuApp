@@ -1,6 +1,8 @@
 package com.example.mangaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -21,11 +23,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
+    private RecyclerView recyclerView;
+    private MangaListAdapter mangaListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        mangaListAdapter = new MangaListAdapter(this);
+        recyclerView.setAdapter(mangaListAdapter);
+        recyclerView.setHasFixedSize(true);
+        final GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
+        recyclerView.setLayoutManager(layoutManager);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(getResources().getString(R.string.baseURL))
@@ -43,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<MangaResponse> call, Response<MangaResponse> response) {
                 if(response.isSuccessful()){
                     MangaResponse mangaResponse = response.body();
-                    ArrayList<Manga> listaManga = mangaResponse.getData();
+                    ArrayList<Manga> mangaList = mangaResponse.getData();
+                    mangaListAdapter.addMangaList(mangaList);
 
-                    for (int i = 0; i < listaManga.size(); i++){
-                        Attributes attributes = listaManga.get(i).getAttributes();
+                    for (int i = 0; i < mangaList.size(); i++){
+                        Attributes attributes = mangaList.get(i).getAttributes();
                         Log.e(getResources().getString(R.string.TAG), " Name: " + attributes.getCanonicalTitle());
                     }
 
@@ -61,6 +73,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

@@ -26,3 +26,6 @@
 
 ### v0.3.0
 - Work begins on the graphic part.
+
+### v0.4.0
+- Manga covers and their names are shown

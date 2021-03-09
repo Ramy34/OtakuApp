@@ -20,6 +20,7 @@ public class Attributes {
     private String endDate;
     private String nextRelease;
     private int popularityRank;
+    private int ratingRank;
     private String ageRating;
     private String ageRatingGuide;
     private String subtype;
@@ -254,5 +255,13 @@ public class Attributes {
 
     public void setMangaType(String mangaType) {
         this.mangaType = mangaType;
+    }
+
+    public int getRatingRank() {
+        return ratingRank;
+    }
+
+    public void setRatingRank(int ratingRank) {
+        this.ratingRank = ratingRank;
     }
 }
