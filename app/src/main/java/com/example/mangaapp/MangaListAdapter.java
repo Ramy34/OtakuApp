@@ -1,6 +1,7 @@
 package com.example.mangaapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,9 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.mangaCover);
+
+        //events
+        holder.setOnClickListener();
     }
 
     @Override
@@ -56,7 +60,7 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView mangaCover;
         private TextView mangaName;
 
@@ -65,6 +69,18 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
 
             mangaCover = itemView.findViewById(R.id.mangaCover);
             mangaName = itemView.findViewById(R.id.mangaName);
+        }
+
+        public void setOnClickListener() {
+            mangaCover.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(itemView.getContext(), MainActivity2.class);
+
+            intent.putExtra("Id", dataset.get(getLayoutPosition()).getId());
+            itemView.getContext().startActivity(intent);
         }
     }
 }

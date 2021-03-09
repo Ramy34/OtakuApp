@@ -1,6 +1,11 @@
 package com.example.mangaapp.models;
 
-public class Manga {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Manga implements Serializable {
     private int id;
     private String type;
     private LinkSelf links;
