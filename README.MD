@@ -29,3 +29,6 @@
 
 ### v0.4.0
 - Manga covers and their names are shown
+
+### v0.4.1
+- Minimal details

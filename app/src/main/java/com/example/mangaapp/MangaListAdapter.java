@@ -37,7 +37,6 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Manga manga = dataset.get(position);
-        Attributes attributes = dataset.get(position).getAttributes();
         holder.mangaName.setText(manga.getAttributes().getCanonicalTitle());
 
         Glide.with(context)
