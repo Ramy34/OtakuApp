@@ -12,3 +12,9 @@
 
 ### V0.1.0
 - Project creation
+
+### V0.1.1
+- The readme is attached
+
+### v0.1.2
+- The necessary dependencies for the management of the Api are added
