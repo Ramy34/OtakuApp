@@ -18,3 +18,8 @@
 
 ### v0.1.2
 - The necessary dependencies for the management of the Api are added
+
+## v0.2.0
+- Internet permissions are granted.
+- Models are created for the attributes of the manga.
+- The request to the Api is made (at the moment it only shows the names of the first 10 in the console).
