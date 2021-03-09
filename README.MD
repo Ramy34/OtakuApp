@@ -35,3 +35,6 @@
 
 ### v0.5.0
 - The entire list of available mangas is displayed
+
+### v0.5.1
+- Minimal details
