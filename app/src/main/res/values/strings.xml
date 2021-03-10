@@ -24,4 +24,5 @@
     <string name="ChapterCount">"Chapters: "</string>
     <string name="VC">VolumeCount</string>
     <string name="VolumeCount">"Volumes: "</string>
+    <string name="Search">Search</string>
 </resources>

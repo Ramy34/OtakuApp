@@ -47,3 +47,6 @@
 
 ### v1.0.0
 - Functional app, search module missing
+
+### v1.0.1
+- Search icon is added in the toolbar (Not working yet)

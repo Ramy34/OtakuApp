@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 
 import com.example.mangaapp.api.KitsuService;
 import com.example.mangaapp.api.MangaResponse;
@@ -72,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
 
         aptoParaCargar = true;
         obtenerDatos(offset);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     private void obtenerDatos(int offset) {
