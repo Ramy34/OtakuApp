@@ -41,7 +41,7 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
         holder.mangaName.setText(manga.getAttributes().getCanonicalTitle());
 
         Glide.with(context)
-                .load(context.getResources().getString(R.string.image_url) + manga.getId() + context.getResources().getString(R.string.jpg))
+                .load(context.getResources().getString(R.string.image_url) + manga.getId() + context.getResources().getString(R.string.jpg_large))
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.mangaCover);

@@ -44,3 +44,6 @@
 
 ### v0.5.3
 - The connection with another activity is correctly terminated.
+
+### v1.0.0
+- Functional app, search module missing

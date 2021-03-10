@@ -4,8 +4,24 @@
     <string name="TAG">MANGA</string>
     <string name="baseURL">https://kitsu.io/api/edge/</string>
     <string name="image_url">https://media.kitsu.io/manga/poster_images/</string>
-    <string name="jpg">/tiny.jpg</string>
+    <string name="jpg">/original.jpg</string>
     <string name="contentDescription">Manga Cover</string>
     <string name="baseURLlimit">https://kitsu.io/api/edge/manga?page%5Blimit%5D={limit}</string>
     <string name="baseURLoffset">page%5Boffset%5D={offset}</string>
+    <string name="tvSynopsis">Synopsis</string>
+    <string name="CT">CanonicalTitle</string>
+    <string name="SD">StartDate</string>
+    <string name="ED">EndDate</string>
+    <string name="STA">Status</string>
+    <string name="jpg_large">/large.jpg</string>
+    <string name="StartDate">"Start Date: "</string>
+    <string name="EndDate">"End Date: "</string>
+    <string name="Status">"Status: "</string>
+    <string name="Unknown">Unknown</string>
+    <string name="SRL">Serialization</string>
+    <string name="Serialization">"Serialization: "</string>
+    <string name="CC">ChapteCount</string>
+    <string name="ChapterCount">"Chapters: "</string>
+    <string name="VC">VolumeCount</string>
+    <string name="VolumeCount">"Volumes: "</string>
 </resources>
