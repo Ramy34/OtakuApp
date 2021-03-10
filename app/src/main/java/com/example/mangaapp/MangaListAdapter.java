@@ -77,9 +77,30 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
 
         @Override
         public void onClick(View v) {
+            //Send
             Intent intent = new Intent(itemView.getContext(), MainActivity2.class);
+            Manga manga = dataset.get(getLayoutPosition());
 
-            intent.putExtra("Id", dataset.get(getLayoutPosition()).getId());
+            int id = manga.getId();
+            String synopsis = manga.getAttributes().getSynopsis();
+            String canonicalTitles = manga.getAttributes().getCanonicalTitle();
+            String startDate = manga.getAttributes().getStartDate();
+            String endtDate = manga.getAttributes().getEndDate();
+            String status = manga.getAttributes().getStatus();
+            int chapterCount = manga.getAttributes().getChapterCount();
+            int volumeCount = manga.getAttributes().getVolumeCount();
+            String serialization = manga.getAttributes().getSerialization();
+
+            intent.putExtra("Id", id);
+            intent.putExtra("Synopsis", synopsis);
+            intent.putExtra("CanonicalTitle", canonicalTitles);
+            intent.putExtra("StartDate", startDate);
+            intent.putExtra("EndDate", endtDate);
+            intent.putExtra("Status", status);
+            intent.putExtra("ChapterCount", chapterCount);
+            intent.putExtra("VolumeCount", volumeCount);
+            intent.putExtra("Serialization", serialization);
+
             itemView.getContext().startActivity(intent);
         }
     }

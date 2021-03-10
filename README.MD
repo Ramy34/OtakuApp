@@ -11,13 +11,13 @@
 ## Version History
 
 ### V0.1.0
-- Project creation
+- Project creation.
 
 ### V0.1.1
-- The readme is attached
+- The readme is attached.
 
 ### v0.1.2
-- The necessary dependencies for the management of the Api are added
+- The necessary dependencies for the management of the Api are added.
 
 ### v0.2.0
 - Internet permissions are granted.
@@ -28,13 +28,19 @@
 - Work begins on the graphic part.
 
 ### v0.4.0
-- Manga covers and their names are shown
+- Manga covers and their names are shown.
 
 ### v0.4.1
-- Minimal details
+- Minimal details.
 
 ### v0.5.0
-- The entire list of available mangas is displayed
+- The entire list of available mangas is displayed.
 
 ### v0.5.1
-- Minimal details
+- Minimal details.
+
+### v0.5.2
+- The connection is made with another activity.
+
+### v0.5.3
+- The connection with another activity is correctly terminated.

@@ -28,7 +28,7 @@ public class Attributes {
     private String tba;
     private PosterImage posterImages;
     private CoverImage coverImage;
-    private String chapterCount;
+    private int chapterCount;
     private int volumeCount;
     private String serialization;
     private String mangaType;
@@ -225,11 +225,11 @@ public class Attributes {
         this.coverImage = coverImage;
     }
 
-    public String getChapterCount() {
+    public int getChapterCount() {
         return chapterCount;
     }
 
-    public void setChapterCount(String chapterCount) {
+    public void setChapterCount(int chapterCount) {
         this.chapterCount = chapterCount;
     }
 
