@@ -1,4 +1,4 @@
-package com.example.mangaapp;
+package com.example.mangaapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.mangaapp.R;
 import com.example.mangaapp.models.Manga;
 
 import java.util.ArrayList;
@@ -28,9 +29,6 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
-        Bundle extras = getIntent().getExtras();
-        assert extras != null;
 
         int id = getIntent().getIntExtra("Id", 0);
         String synopsis = getIntent().getStringExtra("Synopsis");
@@ -80,7 +78,4 @@ public class MainActivity2 extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(poster);
     }
-
-
-
 }

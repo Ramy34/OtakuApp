@@ -50,3 +50,6 @@
 
 ### v1.0.1
 - Search icon is added in the toolbar (Not working yet)
+
+### v1.1.0
+- Searchable with loaded items
