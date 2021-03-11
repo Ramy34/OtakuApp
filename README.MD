@@ -46,16 +46,20 @@
 - The connection with another activity is correctly terminated.
 
 ### v1.0.0
-- Functional app, search module missing
+- Functional app, search module missing.
 
 ### v1.0.1
-- Search icon is added in the toolbar (Not working yet)
+- Search icon is added in the toolbar (Not working yet).
 
 ### v1.1.0
-- Searchable with loaded items
+- Searchable with loaded items.
 
 ### v1.2.0
-- Api-based search
+- Api-based search.
 
 ### v1.2.1
-- Minor fixes
+- Minor fixes.
+
+### v1.2.2
+- Icon change.
+- minor fixes.

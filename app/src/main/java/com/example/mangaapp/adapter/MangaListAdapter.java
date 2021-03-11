@@ -120,7 +120,6 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
         @Override
         public void onClick(View v) {
             Manga manga = filteredMangaList.get(getAdapterPosition());
-            Toast.makeText(context, manga.getAttributes().getCanonicalTitle(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(itemView.getContext(), MainActivity2.class);
 
             int id = manga.getId();
