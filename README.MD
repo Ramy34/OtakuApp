@@ -54,5 +54,8 @@
 ### v1.1.0
 - Searchable with loaded items
 
-### v 1.2.0
+### v1.2.0
 - Api-based search
+
+### v1.2.1
+- Minor fixes
