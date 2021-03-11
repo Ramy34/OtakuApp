@@ -53,3 +53,6 @@
 
 ### v1.1.0
 - Searchable with loaded items
+
+### v 1.2.0
+- Api-based search

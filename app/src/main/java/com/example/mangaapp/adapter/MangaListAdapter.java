@@ -35,6 +35,10 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
         this.filteredMangaList = this.mangaList;
     }
 
+    public ArrayList<Manga> getFilteredMangaList() {
+        return filteredMangaList;
+    }
+
     @NonNull
     @Override
     public MangaListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -91,6 +95,11 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
 
     public void addMangaList(ArrayList<Manga> mangaList) {
         filteredMangaList.addAll(mangaList);
+        notifyDataSetChanged();
+    }
+
+    public void resetMangaList(){
+        filteredMangaList = new ArrayList<>();
         notifyDataSetChanged();
     }
 
