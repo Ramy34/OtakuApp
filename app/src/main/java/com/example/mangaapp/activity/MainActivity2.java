@@ -3,19 +3,18 @@ package com.example.mangaapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.ImageButton;;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mangaapp.R;
-import com.example.mangaapp.models.Manga;
-
-import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
-    ImageView poster;
+    ImageButton poster;
     TextView tvCanonicalTitle;
     TextView tvSynopsis;
     TextView tvStartDate;
@@ -52,6 +51,15 @@ public class MainActivity2 extends AppCompatActivity {
 
         load(id, synopsis, canonicalTitles, startDate, endtDate, status, chapterCount, volumeCount, serialization);
 
+        poster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                intent.putExtra("Id", id);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private String validation(String string) {
@@ -78,4 +86,6 @@ public class MainActivity2 extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(poster);
     }
+
+
 }

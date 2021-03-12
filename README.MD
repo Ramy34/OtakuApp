@@ -63,3 +63,6 @@
 ### v1.2.2
 - Icon change.
 - minor fixes.
+
+### v1.3.0
+- When the manga image is touched in the information section it opens in another activity.

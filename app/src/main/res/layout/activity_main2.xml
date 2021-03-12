@@ -25,7 +25,7 @@
                 android:text="@string/CT"
                 android:textSize="30sp" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/poster"
                 android:layout_width="145dp"
                 android:layout_height="200dp"
@@ -33,7 +33,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:contentDescription="@string/contentDescription"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:background="@null"/>
 
             <TextView
                 android:id="@+id/tvStartDate"
