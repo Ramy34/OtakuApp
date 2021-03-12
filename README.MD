@@ -76,6 +76,9 @@
 - Change the app icon.
 - In the future you will be able to add anime and manga to favorites.
 
-## v2.1.0
+### v2.1.0
 - Repetitive code is eliminated and code is lightened.
 - The API search does not work at the moment.
+
+### v2.1.1
+- Api search is fixed

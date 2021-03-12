@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                                 getList(offset, option);
                             }else{
                                 offsetSearch += 20;
-                                //search(query);
+                                search(query);
                             }
                         }
                     }
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 aniMangaListAdapter.resetList();
                 offsetSearch = 0;
-                //search(query);
+                search(query);
                 return true;
             }
             @Override
@@ -163,8 +163,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
-    /*
     //This method will handle the search when the user sends the request
     private void search(String queryLocal) {
         query = queryLocal;
@@ -182,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     aniMangaResponse = response.body();
                     ArrayList<AniManga> list = aniMangaResponse.getData();
-                    AniMangaListAdapter.addListSearch(list);
+                    aniMangaListAdapter.addList(list);
                     flag = 1;
                 }else{
                     Toast.makeText(getApplicationContext(), getString(R.string.onRespone) + response.errorBody(), Toast.LENGTH_SHORT).show();
@@ -194,5 +192,5 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), getString(R.string.onFailure) + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }*/
+    }
 }
