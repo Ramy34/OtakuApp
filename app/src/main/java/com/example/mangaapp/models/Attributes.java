@@ -41,7 +41,7 @@ public class Attributes {
 
     private Titles titles;
     private CoverImage coverImage;
-    private PosterImage posterImage; //Primer error
+    private PosterImage posterImage;
     private RatingFrequencies ratingFrequencies; //Segundo error
 
 

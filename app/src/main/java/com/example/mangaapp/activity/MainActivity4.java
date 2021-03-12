@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.mangaapp.R;
 
@@ -28,20 +29,17 @@ public class MainActivity4 extends AppCompatActivity {
 
     @SuppressLint("NonConstantResourceId")
     public void onClick(View view) {
-        Intent intent = new Intent(MainActivity4.this, MainActivity.class);
-        switch (view.getId()){
-            case R.id.ivManga:
+
+        if (view.getId() == R.id.ivFavorite){
+            Toast.makeText(this, R.string.FutureFavorites, Toast.LENGTH_SHORT).show();
+        }else{
+            Intent intent = new Intent(MainActivity4.this, MainActivity.class);
+            if(view.getId() == R.id.ivManga){
                 intent.putExtra(getString(R.string.Option), 0);
-                break;
-            case R.id.ivAnime:
+            }else{
                 intent.putExtra(getString(R.string.Option), 1);
-                break;
-            case R.id.ivFavorite:
-                intent.putExtra(getString(R.string.Option), 2);
-                break;
-            default:
-                break;
+            }
+            startActivity(intent);
         }
-        startActivity(intent);
     }
 }

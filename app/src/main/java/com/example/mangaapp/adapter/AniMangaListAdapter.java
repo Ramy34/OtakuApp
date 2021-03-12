@@ -49,13 +49,8 @@ public class AniMangaListAdapter extends RecyclerView.Adapter<AniMangaListAdapte
     public void onBindViewHolder(@NonNull AniMangaListAdapter.ViewHolder holder, int position) {
         //Load the information
         holder.name.setText(filteredAniMangaList.get(position).getAttributes().getCanonicalTitle());
-        if(option == 0){
-            url_img = context.getResources().getString(R.string.image_url_manga);
-        }else {
-            url_img = context.getResources().getString(R.string.image_url_anime);
-        }
         Glide.with(context)
-                .load( url_img+ filteredAniMangaList.get(position).getId() + context.getResources().getString(R.string.jpg_large))
+                .load( filteredAniMangaList.get(position).getAttributes().getPosterImage().getLarge())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.cover);
         holder.setOnClickListener();
@@ -126,7 +121,7 @@ public class AniMangaListAdapter extends RecyclerView.Adapter<AniMangaListAdapte
             AniManga aniManga = filteredAniMangaList.get(getAdapterPosition());
             Intent intent = new Intent(itemView.getContext(), MainActivity2.class);
 
-            int id = aniManga.getId();
+            String posterImage = aniManga.getAttributes().getPosterImage().getLarge();
             String type = aniManga.getType();
             String synopsis = aniManga.getAttributes().getSynopsis();
             String canonicalTitles = aniManga.getAttributes().getCanonicalTitle();
@@ -139,7 +134,6 @@ public class AniMangaListAdapter extends RecyclerView.Adapter<AniMangaListAdapte
             int episodeCount = aniManga.getAttributes().getEpisodeCount();
             String youtubeVideoId = aniManga.getAttributes().getYoutubeVideoId();
 
-            intent.putExtra(context.getString(R.string.Id), id);
             intent.putExtra(context.getString(R.string.Type), type);
             intent.putExtra(context.getString(R.string.Synopsis), synopsis);
             intent.putExtra(context.getString(R.string.CanonicalTitle), canonicalTitles);
@@ -151,6 +145,8 @@ public class AniMangaListAdapter extends RecyclerView.Adapter<AniMangaListAdapte
             intent.putExtra(context.getString(R.string.Serialization), serialization);
             intent.putExtra(context.getString(R.string.EpisodeCount), episodeCount);
             intent.putExtra(context.getString(R.string.YoutubeVideoId), youtubeVideoId);
+            intent.putExtra(context.getString(R.string.PosterImage), posterImage);
+
             context.startActivity(intent);
         }
     }

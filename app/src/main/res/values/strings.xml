@@ -12,6 +12,7 @@
     <!-- Toast Message -->
     <string name="onRespone">"onResponse: "</string>
     <string name="onFailure">"onFailure: "</string>
+    <string name="FutureFavorites">"Coming soon!"</string>
     <!-- Keys -->
     <string name="Id">Id</string>
     <string name="Synopsis">Synopsis</string>
@@ -26,6 +27,7 @@
     <string name="EpisodeCount">EpisodeCount</string>
     <string name="YoutubeVideoId">YoutubeVideoId</string>
     <string name="Type">Type</string>
+    <string name="PosterImage">PosterImage</string>
     <!-- TextView Information -->
     <string name="tvStartDate">"Start Date: "</string>
     <string name="tvEndDate">"End Date: "</string>

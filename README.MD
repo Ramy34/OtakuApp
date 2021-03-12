@@ -81,7 +81,10 @@
 - The API search does not work at the moment.
 
 ### v2.1.1
-- Api search is fixed
+- Api search is fixed.
 
 ### v2.2.0
-- You can play the anime trailers in the native YouTube app
+- You can play the anime trailers in the native YouTube app.
+
+### v2.2.1
+- Minor fixes.

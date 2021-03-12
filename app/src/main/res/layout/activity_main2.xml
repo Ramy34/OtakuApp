@@ -25,26 +25,15 @@
                 android:text="@string/CanonicalTitle"
                 android:textSize="30sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/poster"
-                    android:layout_width="145dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@null"
-                    android:contentDescription="@string/contentDescription" />
-
-                <VideoView
-                    android:id="@+id/ibYoutubeIntern"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/poster"
+                android:layout_width="145dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@null"
+                android:contentDescription="@string/contentDescription" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,6 +107,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:layout_marginStart="50dp"
+                android:layout_marginTop="25dp"
                 app:srcCompat="@mipmap/ic_youtube"
                 android:contentDescription="@string/contentDescriptionYoutube"/>
 

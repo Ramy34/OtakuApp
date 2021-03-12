@@ -1,11 +1,13 @@
 package com.example.mangaapp.models;
 
-public class AniManga {
+import java.io.Serializable;
+
+public class AniManga implements Serializable {
     private int id;
     private String type;
     private LinkSelf links;
-    private Attributes attributes;
-    private Relationships relationships;
+    private Attributes attributes; //Error in ratingFrequencies
+    private Relationships relationships; // Error in all
 
     public int getId() {
         return id;

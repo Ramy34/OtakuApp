@@ -33,7 +33,6 @@ public class MainActivity2 extends AppCompatActivity {
     TextView tvExtra1;
     TextView tvExtra2;
     TextView tvSerialization;
-    VideoView vvYoutubeIntern;
     ImageButton imYoutubeNative;
 
     //Constant to handle case of some error when receiving the data
@@ -54,11 +53,10 @@ public class MainActivity2 extends AppCompatActivity {
         tvExtra1 = findViewById(R.id.tvExtra1);
         tvExtra2 = findViewById(R.id.tvExtra2);
         tvSerialization = findViewById(R.id.tvSerialization);
-        vvYoutubeIntern = findViewById(R.id.ibYoutubeIntern);
         imYoutubeNative = findViewById(R.id.ibYoutubeNative);
 
         //We obtain the data of the manga that we want to show
-        int id = getIntent().getIntExtra(getString(R.string.Id), defaultValue);
+        String posterImage = getIntent().getStringExtra(getString(R.string.PosterImage));
         String type = getIntent().getStringExtra(getString(R.string.Type));
         String synopsis = getIntent().getStringExtra(getString(R.string.Synopsis));
         String canonicalTitles = getIntent().getStringExtra(getString(R.string.CanonicalTitle));
@@ -71,7 +69,7 @@ public class MainActivity2 extends AppCompatActivity {
         int episodeCount =getIntent().getIntExtra(getString(R.string.EpisodeCount), defaultValue);
         String youtubeVideoId = getIntent().getStringExtra(getString(R.string.YoutubeVideoId));
 
-        load(id, synopsis, canonicalTitles, startDate, endtDate, status, chapterCount, volumeCount, serialization, episodeCount, youtubeVideoId, type);
+        load(posterImage, synopsis, canonicalTitles, startDate, endtDate, status, chapterCount, volumeCount, serialization, episodeCount, youtubeVideoId, type);
 
         //Event when poster is pressed
         poster.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +77,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 //We send the id of the manga to a new activity
                 Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-                intent.putExtra(getString(R.string.Id), id);
-                intent.putExtra(getString(R.string.Type), type);
+                intent.putExtra(getString(R.string.PosterImage), posterImage);
                 startActivity(intent);
             }
         });
@@ -97,38 +94,32 @@ public class MainActivity2 extends AppCompatActivity {
 
     //Load all the information we get from the selected manga and display it.
     @SuppressLint("SetTextI18n")
-    private void load(int id, String synopsis, String canonicalTitles, String startDate, String endtDate, String status, int chapterCount, int volumeCount, String serialization, int episodeCount, String youtubeVideoID, String type) {
-        String url_img;
+    private void load(String posterImage, String synopsis, String canonicalTitles, String startDate, String endtDate, String status, int chapterCount, int volumeCount, String serialization, int episodeCount, String youtubeVideoID, String type) {
         tvCanonicalTitle.setText(canonicalTitles);
         tvSynopsis.setText(synopsis);
         tvStartDate.setText(getString(R.string.tvStartDate) + startDate);
         tvEndDate.setText(getString(R.string.tvEndDate) + endtDate);
         tvStatus.setText(getString(R.string.tvStatus) + status);
+        youtubeValidator(youtubeVideoID);
+        Glide.with(this)
+                .load(posterImage)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(poster);
 
         if(type.equals(getString(R.string.Manga).toLowerCase())){
             tvSerialization.setVisibility(View.VISIBLE);
             tvExtra2.setVisibility(View.VISIBLE);
-            vvYoutubeIntern.setVisibility(View.GONE);
-            imYoutubeNative.setVisibility(View.GONE);
 
             tvExtra1.setText( getString(R.string.tvChapterCount) + chapterCount);
             tvExtra2.setText( getString(R.string.tvVolumeCount) + volumeCount);
             tvSerialization.setText(getString(R.string.tvSerialization) + serialization);
-            url_img = getString(R.string.image_url_manga);
 
         }else{
-            youtubeValidator(youtubeVideoID);
             tvSerialization.setVisibility(View.GONE);
             tvExtra2.setVisibility(View.GONE);
 
             tvExtra1.setText( getString(R.string.tvEpisodeCount) + episodeCount);
-            url_img = getString(R.string.image_url_anime);
         }
-
-        Glide.with(this)
-                .load(url_img + id + getString(R.string.jpg_large))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(poster);
     }
 
     //In some cases the start date and the end date are null values so we change the value to unknown.
@@ -141,16 +132,8 @@ public class MainActivity2 extends AppCompatActivity {
 
     private void youtubeValidator(String youtubeVideoID) {
         if(youtubeVideoID != null){
-            vvYoutubeIntern.setVisibility(View.VISIBLE);
             imYoutubeNative.setVisibility(View.VISIBLE);
-            Uri video = Uri.parse(getString(R.string.youtubeURLExtern)+ youtubeVideoID);
-            //Uri video = Uri.parse("http://techslides.com/demos/sample-videos/small.mp4");
-            vvYoutubeIntern.setMediaController(new MediaController(this));
-            vvYoutubeIntern.setVideoURI(video);
-            vvYoutubeIntern.requestFocus();
-            vvYoutubeIntern.start();
         }else{
-            vvYoutubeIntern.setVisibility(View.GONE);
             imYoutubeNative.setVisibility(View.GONE);
         }
     }
