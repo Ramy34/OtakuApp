@@ -16,7 +16,9 @@
         <activity
             android:name=".activity.MainActivity3"
             android:theme="@style/Theme.MangaApp.NoActionBar" />
-        <activity android:name=".activity.MainActivity4">
+        <activity
+            android:name=".activity.MainActivity4"
+            android:theme="@style/Theme.MangaApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

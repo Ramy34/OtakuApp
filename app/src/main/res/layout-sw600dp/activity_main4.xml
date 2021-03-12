@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainActivity4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wallpaper_phone"
+    android:background="@drawable/wallpaper_tablet"
     tools:context=".activity.MainActivity4">
 
 
@@ -35,7 +33,7 @@
                     android:background="@null"
                     android:contentDescription="@string/contentDescription"
                     android:onClick="onClick"
-                    app:srcCompat="@mipmap/ic_manga" />
+                    app:srcCompat="@mipmap/ic_manga_tablet" />
 
                 <TextView
                     android:id="@+id/tvManga"
@@ -44,8 +42,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="25dp"
                     android:text="@string/Manga"
-                    android:textColor="#CACFD2"
-                    android:textSize="25sp"
+                    android:textSize="50sp"
+                    android:textColor="#283747"
                     tools:ignore="MissingConstraints" />
             </LinearLayout>
 
@@ -66,7 +64,7 @@
                     android:background="@null"
                     android:contentDescription="@string/contentDescription"
                     android:onClick="onClick"
-                    app:srcCompat="@mipmap/ic_anime" />
+                    app:srcCompat="@mipmap/ic_anime_tablet" />
 
                 <TextView
                     android:id="@+id/tvAnime"
@@ -75,8 +73,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="25dp"
                     android:text="@string/Anime"
-                    android:textColor="#CACFD2"
-                    android:textSize="25sp"
+                    android:textSize="50sp"
+                    android:textColor="#283747"
                     tools:ignore="MissingConstraints" />
 
             </LinearLayout>
@@ -97,7 +95,7 @@
                     android:background="@null"
                     android:contentDescription="@string/contentDescription"
                     android:onClick="onClick"
-                    app:srcCompat="@mipmap/ic_favorites" />
+                    app:srcCompat="@mipmap/ic_favorites_tablet" />
 
 
                 <TextView
@@ -107,8 +105,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="25dp"
                     android:text="@string/Favorites"
-                    android:textColor="#CACFD2"
-                    android:textSize="25sp"
+                    android:textSize="50sp"
+                    android:textColor="#283747"
                     tools:ignore="MissingConstraints" />
 
             </LinearLayout>
@@ -116,4 +114,4 @@
 
     </ScrollView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

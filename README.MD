@@ -88,3 +88,7 @@
 
 ### v2.2.1
 - Minor fixes.
+
+### v2.3.0
+- View for tablets is added.
+- Phone and tablet wallpapers are added.

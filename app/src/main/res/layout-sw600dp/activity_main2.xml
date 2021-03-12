@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wallpaper_phone"
+    android:background="@drawable/wallpaper_tablet"
     tools:context=".activity.MainActivity2">
 
     <ScrollView
@@ -24,13 +24,13 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center_horizontal"
                 android:text="@string/CanonicalTitle"
-                android:textColor="#CACFD2"
-                android:textSize="30sp" />
+                android:textColor="#283747"
+                android:textSize="50sp" />
 
             <ImageButton
                 android:id="@+id/poster"
-                android:layout_width="145dp"
-                android:layout_height="200dp"
+                android:layout_width="290dp"
+                android:layout_height="400dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -49,8 +49,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/StartDate"
-                    android:textColor="#CACFD2"
-                    android:textSize="18sp" />
+                    android:textColor="#283747"
+                    android:textSize="36sp" />
 
                 <TextView
                     android:id="@+id/tvEndDate"
@@ -59,8 +59,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/EndDate"
-                    android:textColor="#CACFD2"
-                    android:textSize="18sp" />
+                    android:textColor="#283747"
+                    android:textSize="36sp" />
             </LinearLayout>
 
             <TextView
@@ -70,8 +70,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/Status"
-                android:textColor="#CACFD2"
-                android:textSize="18sp" />
+                android:textColor="#283747"
+                android:textSize="36sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,8 +85,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/ChapterCount"
-                    android:textColor="#CACFD2"
-                    android:textSize="18sp" />
+                    android:textColor="#283747"
+                    android:textSize="36sp" />
 
                 <TextView
                     android:id="@+id/tvExtra2"
@@ -95,8 +95,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/VolumeCount"
-                    android:textColor="#CACFD2"
-                    android:textSize="18sp" />
+                    android:textColor="#283747"
+                    android:textSize="36sp" />
             </LinearLayout>
 
             <TextView
@@ -106,8 +106,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/Serialization"
-                android:textColor="#CACFD2"
-                android:textSize="20sp" />
+                android:textColor="#283747"
+                android:textSize="36sp" />
 
             <ImageButton
                 android:id="@+id/ibYoutubeNative"
@@ -116,7 +116,7 @@
                 android:background="@null"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="25dp"
-                app:srcCompat="@mipmap/ic_youtube"
+                app:srcCompat="@mipmap/ic_youtube_tablet"
                 android:contentDescription="@string/contentDescriptionYoutube"/>
 
             <TextView
@@ -126,8 +126,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="30dp"
                 android:text="@string/Synopsis"
-                android:textColor="#CACFD2"
-                android:textSize="18sp" />
+                android:textColor="#283747"
+                android:textSize="36sp" />
 
         </LinearLayout>
     </ScrollView>
