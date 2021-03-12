@@ -28,17 +28,23 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private MangaListAdapter mangaListAdapter;
-    private MangaResponse mangaResponse;
-    private ArrayList<Manga> mangaList;
+    private RecyclerView recyclerView; //It is in charge of managing the Recyclerview
 
-    private int flag = 0;
+    private MangaListAdapter mangaListAdapter; //Is in charge of managing the Adapter
 
-    private boolean aptoParaCargar = true;
-    private String query;
-    private int offset = 0;
-    private int offsetSearch = 0;
+    private MangaResponse mangaResponse; //It is in charge of handling the API response
+
+    private ArrayList<Manga> mangaList; //Stores the list of mangas
+
+    private boolean fitToLoad = true; //Takes care of loading more mangas
+
+    private int flag = 0; //Identifies if it is charging in normal mode (0) or in search mode (1)
+
+    private String query; //The searched word
+
+    private int offset = 0; //Manages normal mode offset
+
+    private int offsetSearch = 0; //Manages search mode offset
 
 
     @Override
@@ -46,14 +52,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        //We initialize the adapter handler
         mangaListAdapter = new MangaListAdapter(this);
-        recyclerView.setAdapter(mangaListAdapter);
+
+        recyclerView = findViewById(R.id.recyclerView); //We relate the variable to the container of the graphic view
+
+        //We configure the RecyclerView
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager manager= new GridLayoutManager(getApplicationContext(), 4);
         recyclerView.setLayoutManager(manager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mangaListAdapter);
 
+        //This method will take care of showing new elements every time we reach the end of the list
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
@@ -62,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
                     int visibleItemCount = manager.getChildCount();
                     int totalItemCount = manager.getItemCount();
                     int pastVisibleItems = manager.findFirstVisibleItemPosition();
-                    if (aptoParaCargar) {
+                    if (fitToLoad) {
                         if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
-                            aptoParaCargar = false;
+                            fitToLoad = false;
                             if(flag == 0){
                                 offset += 20;
                                 getMangaList(offset);
@@ -77,35 +88,37 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        aptoParaCargar = true;
+        fitToLoad = true;
         getMangaList(offset);
     }
 
+    //This method will be in charge of making the request to the API and will show the results
     private void getMangaList(int offset) {
         KitsuService kitsuService = RetrofitClient.getClient(this).create(KitsuService.class);
         Call<MangaResponse> mangaResponseCall = kitsuService.getMangaList(20, offset);
         mangaResponseCall.enqueue(new Callback<MangaResponse>() {
             @Override
             public void onResponse(Call<MangaResponse> call, Response<MangaResponse> response) {
-                aptoParaCargar = true;
+                fitToLoad = true;
                 if(response.isSuccessful()){
                     mangaResponse = response.body();
                     mangaList = mangaResponse.getData();
                     mangaListAdapter.addMangaList(mangaList);
                     flag = 0;
                 }else{
-                    Toast.makeText(getApplicationContext(), "onRespone: " + response.errorBody(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.onRespone) + response.errorBody(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<MangaResponse> call, Throwable t) {
-                aptoParaCargar = true;
-                Toast.makeText(getApplicationContext(), "onFalure " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                fitToLoad = true;
+                Toast.makeText(getApplicationContext(), getString(R.string.onFailure) + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    //This method will be in charge of adding the search button in the toolbar and performing the searches
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -133,28 +146,28 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    //This method will handle the search when the user sends the request
     private void search(String queryLocal) {
         query = queryLocal;
-
         KitsuService kitsuService = RetrofitClient.getClient(this).create(KitsuService.class);
         Call<MangaResponse> mangaResponseCall = kitsuService.getSearch(queryLocal, 20, offsetSearch);
         mangaResponseCall.enqueue(new Callback<MangaResponse>() {
             @Override
             public void onResponse(Call<MangaResponse> call, Response<MangaResponse> response) {
-                aptoParaCargar = true;
+                fitToLoad = true;
                 if(response.isSuccessful()){
                     mangaResponse = response.body();
                     ArrayList<Manga> list = mangaResponse.getData();
                     mangaListAdapter.addMangaList(list);
                     flag = 1;
                 }else{
-                    Toast.makeText(getApplicationContext(), "onRespone in search: " + response.errorBody(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.onRespone) + response.errorBody(), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<MangaResponse> call, Throwable t) {
-                aptoParaCargar = true;
-                Toast.makeText(getApplicationContext(), "onFalure in search: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                fitToLoad = true;
+                Toast.makeText(getApplicationContext(), getString(R.string.onFailure) + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

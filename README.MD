@@ -6,7 +6,7 @@
 - Application that lists all the manga in the Kitsu API.
 - Clicking on an item shows more detailed information about it.
 - It has a search entry.
-- Youtube links redirect to the native app.
+- Youtube links redirect to the native app (only in Anime).
 
 ## Version History
 
@@ -66,3 +66,7 @@
 
 ### v1.3.0
 - When the manga image is touched in the information section it opens in another activity.
+
+### v1.3.1
+- Parts of the code are commented.
+- The hardcode is removed

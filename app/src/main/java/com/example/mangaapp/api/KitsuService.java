@@ -1,12 +1,10 @@
 package com.example.mangaapp.api;
 
-import com.example.mangaapp.models.Manga;
-
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+
+//Interface in charge of the interaction with the API
 
 public interface KitsuService {
 

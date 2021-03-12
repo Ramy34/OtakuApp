@@ -11,7 +11,6 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -25,33 +24,31 @@ import androidx.annotation.NonNull;
 import com.example.mangaapp.R;
 
 public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.ViewHolder> implements Filterable {
-    private ArrayList<Manga> mangaList;
+    private final ArrayList<Manga> mangaList;
     private ArrayList<Manga> filteredMangaList;
-    private Context context;
+    private final Context context;
 
+    //Constructor
     public MangaListAdapter(Context context) {
         this.context = context;
         mangaList = new ArrayList<>();
         this.filteredMangaList = this.mangaList;
     }
 
-    public ArrayList<Manga> getFilteredMangaList() {
-        return filteredMangaList;
-    }
-
     @NonNull
     @Override
     public MangaListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //We relate the view with item_manga
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_manga, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MangaListAdapter.ViewHolder holder, int position) {
+        //Load the information
         holder.mangaName.setText(filteredMangaList.get(position).getAttributes().getCanonicalTitle());
         Glide.with(context)
                 .load(context.getResources().getString(R.string.image_url) + filteredMangaList.get(position).getId() + context.getResources().getString(R.string.jpg_large))
-                .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.mangaCover);
         holder.setOnClickListener();
@@ -64,6 +61,7 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
 
     @Override
     public Filter getFilter() {
+        //Search method
         return new Filter(){
             @Override
             protected FilterResults performFiltering(CharSequence charSequence){
@@ -88,7 +86,6 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 filteredMangaList = (ArrayList<Manga>) results.values;
                 notifyDataSetChanged();
-
             }
         };
     }
@@ -104,8 +101,8 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private ImageView mangaCover;
-        private TextView mangaName;
+        private final ImageView mangaCover;
+        private final TextView mangaName;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -132,15 +129,15 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
             int volumeCount = manga.getAttributes().getVolumeCount();
             String serialization = manga.getAttributes().getSerialization();
 
-            intent.putExtra("Id", id);
-            intent.putExtra("Synopsis", synopsis);
-            intent.putExtra("CanonicalTitle", canonicalTitles);
-            intent.putExtra("StartDate", startDate);
-            intent.putExtra("EndDate", endtDate);
-            intent.putExtra("Status", status);
-            intent.putExtra("ChapterCount", chapterCount);
-            intent.putExtra("VolumeCount", volumeCount);
-            intent.putExtra("Serialization", serialization);
+            intent.putExtra(context.getString(R.string.Id), id);
+            intent.putExtra(context.getString(R.string.Synopsis), synopsis);
+            intent.putExtra(context.getString(R.string.CanonicalTitle), canonicalTitles);
+            intent.putExtra(context.getString(R.string.StartDate), startDate);
+            intent.putExtra(context.getString(R.string.EndDate), endtDate);
+            intent.putExtra(context.getString(R.string.Status), status);
+            intent.putExtra(context.getString(R.string.ChapterCount), chapterCount);
+            intent.putExtra(context.getString(R.string.VolumeCount), volumeCount);
+            intent.putExtra(context.getString(R.string.Serialization), serialization);
             context.startActivity(intent);
         }
     }
