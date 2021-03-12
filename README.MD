@@ -82,3 +82,6 @@
 
 ### v2.1.1
 - Api search is fixed
+
+### v2.2.0
+- You can play the anime trailers in the native YouTube app

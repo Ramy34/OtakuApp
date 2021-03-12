@@ -25,33 +25,50 @@
                 android:text="@string/CanonicalTitle"
                 android:textSize="30sp" />
 
-            <ImageButton
-                android:id="@+id/poster"
-                android:layout_width="145dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="@string/contentDescription"
-                android:background="@null"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvStartDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/StartDate"
-                android:textSize="18sp" />
+                <ImageButton
+                    android:id="@+id/poster"
+                    android:layout_width="145dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@null"
+                    android:contentDescription="@string/contentDescription" />
 
-            <TextView
-                android:id="@+id/tvEndDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/EndDate"
-                android:textSize="18sp" />
+                <VideoView
+                    android:id="@+id/ibYoutubeIntern"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvStartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/StartDate"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvEndDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/EndDate"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvStatus"
@@ -62,23 +79,29 @@
                 android:text="@string/Status"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tvExtra1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/ChapterCount"
-                android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvExtra2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/VolumeCount"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/tvExtra1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/ChapterCount"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvExtra2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/VolumeCount"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvSerialization"
@@ -89,6 +112,15 @@
                 android:text="@string/Serialization"
                 android:textSize="20sp" />
 
+            <ImageButton
+                android:id="@+id/ibYoutubeNative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_marginStart="50dp"
+                app:srcCompat="@mipmap/ic_youtube"
+                android:contentDescription="@string/contentDescriptionYoutube"/>
+
             <TextView
                 android:id="@+id/tvSynopsis"
                 android:layout_width="match_parent"
@@ -97,6 +129,7 @@
                 android:layout_marginTop="30dp"
                 android:text="@string/Synopsis"
                 android:textSize="20sp" />
+
         </LinearLayout>
     </ScrollView>
 

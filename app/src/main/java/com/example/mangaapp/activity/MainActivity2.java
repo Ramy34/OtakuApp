@@ -4,14 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageButton;;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mangaapp.R;
+
+import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -25,6 +33,8 @@ public class MainActivity2 extends AppCompatActivity {
     TextView tvExtra1;
     TextView tvExtra2;
     TextView tvSerialization;
+    VideoView vvYoutubeIntern;
+    ImageButton imYoutubeNative;
 
     //Constant to handle case of some error when receiving the data
     final static int defaultValue = 0;
@@ -44,6 +54,8 @@ public class MainActivity2 extends AppCompatActivity {
         tvExtra1 = findViewById(R.id.tvExtra1);
         tvExtra2 = findViewById(R.id.tvExtra2);
         tvSerialization = findViewById(R.id.tvSerialization);
+        vvYoutubeIntern = findViewById(R.id.ibYoutubeIntern);
+        imYoutubeNative = findViewById(R.id.ibYoutubeNative);
 
         //We obtain the data of the manga that we want to show
         int id = getIntent().getIntExtra(getString(R.string.Id), defaultValue);
@@ -72,14 +84,15 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    //In some cases the start date and the end date are null values so we change the value to unknown.
-    private String validation(String string) {
-        if(string == null){
-            string = getString(R.string.Unknown);
-        }
-        return string;
+        
+        imYoutubeNative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri youtube = Uri.parse(getString(R.string.youtubeURLExtern) + youtubeVideoId);
+                Intent youtubeSend = new Intent(Intent.ACTION_VIEW , youtube);
+                startActivity(youtubeSend);
+            }
+        });
     }
 
     //Load all the information we get from the selected manga and display it.
@@ -93,16 +106,22 @@ public class MainActivity2 extends AppCompatActivity {
         tvStatus.setText(getString(R.string.tvStatus) + status);
 
         if(type.equals(getString(R.string.Manga).toLowerCase())){
+            tvSerialization.setVisibility(View.VISIBLE);
+            tvExtra2.setVisibility(View.VISIBLE);
+            vvYoutubeIntern.setVisibility(View.GONE);
+            imYoutubeNative.setVisibility(View.GONE);
+
             tvExtra1.setText( getString(R.string.tvChapterCount) + chapterCount);
             tvExtra2.setText( getString(R.string.tvVolumeCount) + volumeCount);
-            tvSerialization.setVisibility(View.VISIBLE);
             tvSerialization.setText(getString(R.string.tvSerialization) + serialization);
             url_img = getString(R.string.image_url_manga);
 
         }else{
-            tvExtra1.setText( getString(R.string.tvEpisodeCount) + episodeCount);
-            tvExtra2.setText( getString(R.string.tvYoutubeID) + youtubeVideoID);
+            youtubeValidator(youtubeVideoID);
             tvSerialization.setVisibility(View.GONE);
+            tvExtra2.setVisibility(View.GONE);
+
+            tvExtra1.setText( getString(R.string.tvEpisodeCount) + episodeCount);
             url_img = getString(R.string.image_url_anime);
         }
 
@@ -110,6 +129,30 @@ public class MainActivity2 extends AppCompatActivity {
                 .load(url_img + id + getString(R.string.jpg_large))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(poster);
-
     }
+
+    //In some cases the start date and the end date are null values so we change the value to unknown.
+    private String validation(String string) {
+        if(string == null){
+            string = getString(R.string.Unknown);
+        }
+        return string;
+    }
+
+    private void youtubeValidator(String youtubeVideoID) {
+        if(youtubeVideoID != null){
+            vvYoutubeIntern.setVisibility(View.VISIBLE);
+            imYoutubeNative.setVisibility(View.VISIBLE);
+            Uri video = Uri.parse(getString(R.string.youtubeURLExtern)+ youtubeVideoID);
+            //Uri video = Uri.parse("http://techslides.com/demos/sample-videos/small.mp4");
+            vvYoutubeIntern.setMediaController(new MediaController(this));
+            vvYoutubeIntern.setVideoURI(video);
+            vvYoutubeIntern.requestFocus();
+            vvYoutubeIntern.start();
+        }else{
+            vvYoutubeIntern.setVisibility(View.GONE);
+            imYoutubeNative.setVisibility(View.GONE);
+        }
+    }
+
 }

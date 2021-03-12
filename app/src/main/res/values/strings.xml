@@ -7,6 +7,8 @@
     <string name="jpg_original">/original.jpg</string>
     <string name="jpg_large">/large.jpg</string>
     <string name="image_url_anime">https://media.kitsu.io/anime/poster_images/</string>
+    <string name="youtubeURLIntern">https://www.youtube.com/watch?v=</string>
+    <string name="youtubeURLExtern">https://youtu.be/</string>
     <!-- Toast Message -->
     <string name="onRespone">"onResponse: "</string>
     <string name="onFailure">"onFailure: "</string>
@@ -38,6 +40,7 @@
     <string name="Anime">Anime</string>
     <string name="Favorites">Favorites</string>
     <string name="contentDescription">Manga Cover</string>
+    <string name="contentDescriptionYoutube">Youtube Icon</string>
     <string name="Unknown">Unknown</string>
     <string name="Search">Search</string>
     <!-- Debug -->
