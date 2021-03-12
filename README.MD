@@ -98,3 +98,6 @@
 
 ### v2.3.2
 - Minor fixes.
+
+### v2.3.3
+- Minor fixes.
