@@ -1,6 +1,8 @@
-package com.example.mangaapp.models;
+package com.example.mangaapp.models.anime;
 
-public class Relationships {
+import com.example.mangaapp.models.generic.Links;
+
+public class AnimeRelationships {
     private Links genres;
     private Links categories;
     private Links casting;
@@ -12,9 +14,11 @@ public class Relationships {
     private Links staff;
     private Links productions;
     private Links quotes;
-    private Links chapters;
-    private Links mangaCharacters;
-    private Links mangaStaff;
+    private Links episode;
+    private Links streamingLinks;
+    private Links animeProductions;
+    private Links animeCharacters;
+    private Links animeStaff;
 
     public Links getGenres() {
         return genres;
@@ -56,12 +60,12 @@ public class Relationships {
         this.mapping = mapping;
     }
 
-    public Links getReviewa() {
+    public Links getReviews() {
         return reviews;
     }
 
-    public void setReviewa(Links reviewa) {
-        this.reviews = reviewa;
+    public void setReviews(Links reviews) {
+        this.reviews = reviews;
     }
 
     public Links getMediaRelationships() {
@@ -104,28 +108,43 @@ public class Relationships {
         this.quotes = quotes;
     }
 
-    public Links getChapters() {
-        return chapters;
+    public Links getEpisode() {
+        return episode;
     }
 
-    public void setChapters(Links chapters) {
-        this.chapters = chapters;
+    public void setEpisode(Links episode) {
+        this.episode = episode;
     }
 
-    public Links getMangaCharacters() {
-        return mangaCharacters;
+    public Links getStreamingLinks() {
+        return streamingLinks;
     }
 
-    public void setMangaCharacters(Links mangaCharacters) {
-        this.mangaCharacters = mangaCharacters;
+    public void setStreamingLinks(Links streamingLinks) {
+        this.streamingLinks = streamingLinks;
     }
 
-    public Links getMangaStaff() {
-        return mangaStaff;
+    public Links getAnimeProductions() {
+        return animeProductions;
     }
 
-    public void setMangaStaff(Links mangaStaff) {
-        this.mangaStaff = mangaStaff;
+    public void setAnimeProductions(Links animeProductions) {
+        this.animeProductions = animeProductions;
+    }
+
+    public Links getAnimeCharacters() {
+        return animeCharacters;
+    }
+
+    public void setAnimeCharacters(Links animeCharacters) {
+        this.animeCharacters = animeCharacters;
+    }
+
+    public Links getAnimeStaff() {
+        return animeStaff;
+    }
+
+    public void setAnimeStaff(Links animeStaff) {
+        this.animeStaff = animeStaff;
     }
 }
-

@@ -11,11 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MangaApp">
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity2" />
         <activity
             android:name=".activity.MainActivity3"
-            android:theme="@style/Theme.MangaApp.NoActionBar"></activity>
-        <activity android:name=".activity.MainActivity2" />
-        <activity android:name=".activity.MainActivity">
+            android:theme="@style/Theme.MangaApp.NoActionBar" />
+        <activity android:name=".activity.MainActivity4">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -12,5 +12,11 @@ public interface KitsuService {
     Call<MangaResponse> getMangaList(@Query("page[limit]") int limit, @Query("page[offset]") int offset);
 
     @GET("manga?filter")
-    Call<MangaResponse> getSearch(@Query("filter[text]") String text, @Query("page[limit]") int limit, @Query("page[offset]") int offset);
+    Call<MangaResponse> getSearchManga(@Query("filter[text]") String text, @Query("page[limit]") int limit, @Query("page[offset]") int offset);
+
+    @GET("anime")
+    Call<AnimeResponse> getAnimeList(@Query("page[limit]") int limit, @Query("page[offset]") int offset);
+
+    @GET("anime?filter")
+    Call<AnimeResponse> getSearchAnime(@Query("filter[text]") String text, @Query("page[limit]") int limit, @Query("page[offset]") int offset);
 }

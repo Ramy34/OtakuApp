@@ -1,6 +1,7 @@
 package com.example.mangaapp.api;
 
-import com.example.mangaapp.models.Manga;
+import com.example.mangaapp.models.anime.Anime;
+import com.example.mangaapp.models.manga.Manga;
 import java.util.ArrayList;
 
 public class MangaResponse {
@@ -13,4 +14,5 @@ public class MangaResponse {
     public void setData(ArrayList<Manga> data) {
         this.data = data;
     }
+
 }

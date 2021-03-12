@@ -1,8 +1,13 @@
-package com.example.mangaapp.models;
+package com.example.mangaapp.models.manga;
+
+import com.example.mangaapp.models.generic.CoverImage;
+import com.example.mangaapp.models.generic.PosterImage;
+import com.example.mangaapp.models.generic.RatingFrequencies;
+import com.example.mangaapp.models.generic.Titles;
 
 import java.util.ArrayList;
 
-public class Attributes {
+public class MangaAttributes {
     private String createdAt;
     private String updateAt;
     private String slug;

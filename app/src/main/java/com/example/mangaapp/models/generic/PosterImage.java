@@ -1,6 +1,4 @@
-package com.example.mangaapp.models;
-
-import java.util.ArrayList;
+package com.example.mangaapp.models.generic;
 
 public class PosterImage {
     private String tiny;

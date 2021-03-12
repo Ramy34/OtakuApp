@@ -63,7 +63,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvChapterCount"
+                android:id="@+id/tvExtra1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -72,7 +72,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvVolumeCount"
+                android:id="@+id/tvExtra2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"

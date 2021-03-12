@@ -22,8 +22,8 @@ public class MainActivity2 extends AppCompatActivity {
     TextView tvStartDate;
     TextView tvEndDate;
     TextView tvStatus;
-    TextView tvChapterCount;
-    TextView tvVolumeCount;
+    TextView tvExtra1;
+    TextView tvExtra2;
     TextView tvSerialization;
 
     //Constant to handle case of some error when receiving the data
@@ -34,17 +34,6 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        //We obtain the data of the manga that we want to show
-        int id = getIntent().getIntExtra(getString(R.string.Id), defaultValue);
-        String synopsis = getIntent().getStringExtra(getString(R.string.Synopsis));
-        String canonicalTitles = getIntent().getStringExtra(getString(R.string.CanonicalTitle));
-        String startDate = validation(getIntent().getStringExtra(getString(R.string.StartDate)));
-        String endtDate = validation(getIntent().getStringExtra(getString(R.string.EndDate)));
-        String status = getIntent().getStringExtra(getString(R.string.Status));
-        int chapterCount = getIntent().getIntExtra(getString(R.string.ChapterCount), defaultValue);
-        int volumeCount = getIntent().getIntExtra(getString(R.string.VolumeCount), defaultValue);
-        String serialization = getIntent().getStringExtra(getString(R.string.Serialization));
-
         //We make the variable-component relationship
         poster = findViewById(R.id.poster);
         tvSynopsis = findViewById(R.id.tvSynopsis);
@@ -52,11 +41,29 @@ public class MainActivity2 extends AppCompatActivity {
         tvStartDate = findViewById(R.id.tvStartDate);
         tvEndDate = findViewById(R.id.tvEndDate);
         tvStatus = findViewById(R.id.tvStatus);
-        tvChapterCount = findViewById(R.id.tvChapterCount);
-        tvVolumeCount = findViewById(R.id.tvVolumeCount);
+        tvExtra1 = findViewById(R.id.tvExtra1);
+        tvExtra2 = findViewById(R.id.tvExtra2);
         tvSerialization = findViewById(R.id.tvSerialization);
 
-        load(id, synopsis, canonicalTitles, startDate, endtDate, status, chapterCount, volumeCount, serialization);
+        //We obtain the data of the manga that we want to show
+        int id = getIntent().getIntExtra(getString(R.string.Id), defaultValue);
+        String type = getIntent().getStringExtra(getString(R.string.Type));
+        String synopsis = getIntent().getStringExtra(getString(R.string.Synopsis));
+        String canonicalTitles = getIntent().getStringExtra(getString(R.string.CanonicalTitle));
+        String startDate = validation(getIntent().getStringExtra(getString(R.string.StartDate)));
+        String endtDate = validation(getIntent().getStringExtra(getString(R.string.EndDate)));
+        String status = getIntent().getStringExtra(getString(R.string.Status));
+
+        if(type.equals(getString(R.string.Manga).toLowerCase())){
+            int chapterCount = getIntent().getIntExtra(getString(R.string.ChapterCount), defaultValue);
+            int volumeCount = getIntent().getIntExtra(getString(R.string.VolumeCount), defaultValue);
+            String serialization = getIntent().getStringExtra(getString(R.string.Serialization));
+            load(id, synopsis, canonicalTitles, startDate, endtDate, status, chapterCount, volumeCount, serialization, 0, null, type);
+        }else{
+            int episodeCount =getIntent().getIntExtra(getString(R.string.EpisodeCount), defaultValue);
+            String youtubeVideoId = getIntent().getStringExtra(getString(R.string.YoutubeVideoId));
+            load(id, synopsis, canonicalTitles, startDate, endtDate, status, 0, 0, null, episodeCount, youtubeVideoId, type);
+        }
 
         //Event when poster is pressed
         poster.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +72,7 @@ public class MainActivity2 extends AppCompatActivity {
                 //We send the id of the manga to a new activity
                 Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                 intent.putExtra(getString(R.string.Id), id);
+                intent.putExtra(getString(R.string.Type), type);
                 startActivity(intent);
             }
         });
@@ -80,21 +88,32 @@ public class MainActivity2 extends AppCompatActivity {
 
     //Load all the information we get from the selected manga and display it.
     @SuppressLint("SetTextI18n")
-    private void load(int id, String synopsis, String canonicalTitles, String startDate, String endtDate, String status, int chapterCount, int volumeCount, String serialization) {
+    private void load(int id, String synopsis, String canonicalTitles, String startDate, String endtDate, String status, int chapterCount, int volumeCount, String serialization, int episodeCount, String youtubeVideoID, String type) {
+        String url_img;
         tvCanonicalTitle.setText(canonicalTitles);
         tvSynopsis.setText(synopsis);
         tvStartDate.setText(getString(R.string.tvStartDate) + startDate);
         tvEndDate.setText(getString(R.string.tvEndDate) + endtDate);
         tvStatus.setText(getString(R.string.tvStatus) + status);
-        tvSerialization.setText(getString(R.string.tvSerialization) + serialization);
-        tvChapterCount.setText( getString(R.string.tvChapterCount) + chapterCount);
-        tvVolumeCount.setText( getString(R.string.tvVolumeCount) + volumeCount);
+
+        if(type.equals(getString(R.string.Manga).toLowerCase())){
+            tvExtra1.setText( getString(R.string.tvChapterCount) + chapterCount);
+            tvExtra2.setText( getString(R.string.tvVolumeCount) + volumeCount);
+            tvSerialization.setVisibility(View.VISIBLE);
+            tvSerialization.setText(getString(R.string.tvSerialization) + serialization);
+            url_img = getString(R.string.image_url_manga);
+
+        }else{
+            tvExtra1.setText( getString(R.string.tvEpisodeCount) + episodeCount);
+            tvExtra2.setText( getString(R.string.tvYoutubeID) + youtubeVideoID);
+            tvSerialization.setVisibility(View.GONE);
+            url_img = getString(R.string.image_url_anime);
+        }
 
         Glide.with(this)
-                .load(getString(R.string.image_url) + id + getString(R.string.jpg_large))
+                .load(url_img + id + getString(R.string.jpg_large))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(poster);
+
     }
-
-
 }

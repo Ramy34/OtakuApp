@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <ImageButton
-        android:id="@+id/mangaCover"
+        android:id="@+id/principalCover"
         android:layout_width="95dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
@@ -15,7 +15,7 @@
         android:background="@null"/>
 
     <TextView
-        android:id="@+id/mangaName"
+        android:id="@+id/principalName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"

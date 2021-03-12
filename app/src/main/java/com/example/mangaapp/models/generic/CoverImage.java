@@ -1,4 +1,4 @@
-package com.example.mangaapp.models;
+package com.example.mangaapp.models.generic;
 
 public class CoverImage {
     private String tiny;

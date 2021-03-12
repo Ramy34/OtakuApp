@@ -1,16 +1,14 @@
-package com.example.mangaapp.models;
+package com.example.mangaapp.models.anime;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import com.example.mangaapp.models.generic.LinkSelf;
 
-import java.io.Serializable;
+public class Anime {
 
-public class Manga implements Serializable {
     private int id;
     private String type;
     private LinkSelf links;
-    private Attributes attributes;
-    private Relationships relationships;
+    private AnimeAttributes attributes;
+    private AnimeRelationships relationships;
 
     public int getId() {
         return id;
@@ -36,19 +34,19 @@ public class Manga implements Serializable {
         this.links = links;
     }
 
-    public Attributes getAttributes() {
+    public AnimeAttributes getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(Attributes attributes) {
+    public void setAttributes(AnimeAttributes attributes) {
         this.attributes = attributes;
     }
 
-    public Relationships getRelationships() {
+    public AnimeRelationships getRelationships() {
         return relationships;
     }
 
-    public void setRelationships(Relationships relationships) {
+    public void setRelationships(AnimeRelationships relationships) {
         this.relationships = relationships;
     }
 }

@@ -69,4 +69,9 @@
 
 ### v1.3.1
 - Parts of the code are commented.
-- The hardcode is removed
+- The hardcode is removed.
+
+## v2.0.0
+- Now you can get the anime list!
+- Change the app icon.
+- In the future you will be able to add anime and manga to favorites.

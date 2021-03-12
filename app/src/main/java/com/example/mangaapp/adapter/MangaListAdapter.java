@@ -18,7 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 
 import com.example.mangaapp.activity.MainActivity2;
-import com.example.mangaapp.models.Manga;
+import com.example.mangaapp.models.manga.Manga;
 
 import androidx.annotation.NonNull;
 import com.example.mangaapp.R;
@@ -39,7 +39,7 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
     @Override
     public MangaListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //We relate the view with item_manga
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_manga, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
         return new ViewHolder(view);
     }
 
@@ -48,7 +48,7 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
         //Load the information
         holder.mangaName.setText(filteredMangaList.get(position).getAttributes().getCanonicalTitle());
         Glide.with(context)
-                .load(context.getResources().getString(R.string.image_url) + filteredMangaList.get(position).getId() + context.getResources().getString(R.string.jpg_large))
+                .load(context.getResources().getString(R.string.image_url_manga) + filteredMangaList.get(position).getId() + context.getResources().getString(R.string.jpg_large))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.mangaCover);
         holder.setOnClickListener();
@@ -106,8 +106,8 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
 
         public ViewHolder(View itemView){
             super(itemView);
-            mangaCover = itemView.findViewById(R.id.mangaCover);
-            mangaName = itemView.findViewById(R.id.mangaName);
+            mangaCover = itemView.findViewById(R.id.principalCover);
+            mangaName = itemView.findViewById(R.id.principalName);
         }
 
         public void setOnClickListener() {
@@ -120,6 +120,7 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
             Intent intent = new Intent(itemView.getContext(), MainActivity2.class);
 
             int id = manga.getId();
+            String type = manga.getType();
             String synopsis = manga.getAttributes().getSynopsis();
             String canonicalTitles = manga.getAttributes().getCanonicalTitle();
             String startDate = manga.getAttributes().getStartDate();
@@ -129,7 +130,9 @@ public class MangaListAdapter extends RecyclerView.Adapter<MangaListAdapter.View
             int volumeCount = manga.getAttributes().getVolumeCount();
             String serialization = manga.getAttributes().getSerialization();
 
+
             intent.putExtra(context.getString(R.string.Id), id);
+            intent.putExtra(context.getString(R.string.Type), type);
             intent.putExtra(context.getString(R.string.Synopsis), synopsis);
             intent.putExtra(context.getString(R.string.CanonicalTitle), canonicalTitles);
             intent.putExtra(context.getString(R.string.StartDate), startDate);
