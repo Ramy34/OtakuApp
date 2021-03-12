@@ -1,14 +1,11 @@
-package com.example.mangaapp.models.anime;
+package com.example.mangaapp.models;
 
-import com.example.mangaapp.models.generic.LinkSelf;
-
-public class Anime {
-
+public class AniManga {
     private int id;
     private String type;
     private LinkSelf links;
-    private AnimeAttributes attributes;
-    private AnimeRelationships relationships;
+    private Attributes attributes;
+    private Relationships relationships;
 
     public int getId() {
         return id;
@@ -34,19 +31,19 @@ public class Anime {
         this.links = links;
     }
 
-    public AnimeAttributes getAttributes() {
+    public Attributes getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(AnimeAttributes attributes) {
+    public void setAttributes(Attributes attributes) {
         this.attributes = attributes;
     }
 
-    public AnimeRelationships getRelationships() {
+    public Relationships getRelationships() {
         return relationships;
     }
 
-    public void setRelationships(AnimeRelationships relationships) {
+    public void setRelationships(Relationships relationships) {
         this.relationships = relationships;
     }
 }

@@ -1,4 +1,6 @@
-package com.example.mangaapp.models.generic;
+package com.example.mangaapp.models;
+
+import com.example.mangaapp.models.Dimensions;
 
 public class Meta {
     private Dimensions dimensions;

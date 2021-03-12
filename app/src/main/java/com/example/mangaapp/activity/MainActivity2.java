@@ -53,17 +53,13 @@ public class MainActivity2 extends AppCompatActivity {
         String startDate = validation(getIntent().getStringExtra(getString(R.string.StartDate)));
         String endtDate = validation(getIntent().getStringExtra(getString(R.string.EndDate)));
         String status = getIntent().getStringExtra(getString(R.string.Status));
+        int chapterCount = getIntent().getIntExtra(getString(R.string.ChapterCount), defaultValue);
+        int volumeCount = getIntent().getIntExtra(getString(R.string.VolumeCount), defaultValue);
+        String serialization = getIntent().getStringExtra(getString(R.string.Serialization));
+        int episodeCount =getIntent().getIntExtra(getString(R.string.EpisodeCount), defaultValue);
+        String youtubeVideoId = getIntent().getStringExtra(getString(R.string.YoutubeVideoId));
 
-        if(type.equals(getString(R.string.Manga).toLowerCase())){
-            int chapterCount = getIntent().getIntExtra(getString(R.string.ChapterCount), defaultValue);
-            int volumeCount = getIntent().getIntExtra(getString(R.string.VolumeCount), defaultValue);
-            String serialization = getIntent().getStringExtra(getString(R.string.Serialization));
-            load(id, synopsis, canonicalTitles, startDate, endtDate, status, chapterCount, volumeCount, serialization, 0, null, type);
-        }else{
-            int episodeCount =getIntent().getIntExtra(getString(R.string.EpisodeCount), defaultValue);
-            String youtubeVideoId = getIntent().getStringExtra(getString(R.string.YoutubeVideoId));
-            load(id, synopsis, canonicalTitles, startDate, endtDate, status, 0, 0, null, episodeCount, youtubeVideoId, type);
-        }
+        load(id, synopsis, canonicalTitles, startDate, endtDate, status, chapterCount, volumeCount, serialization, episodeCount, youtubeVideoId, type);
 
         //Event when poster is pressed
         poster.setOnClickListener(new View.OnClickListener() {

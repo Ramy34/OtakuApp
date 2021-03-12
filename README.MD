@@ -45,7 +45,7 @@
 ### v0.5.3
 - The connection with another activity is correctly terminated.
 
-### v1.0.0
+## v1.0.0
 - Functional app, search module missing.
 
 ### v1.0.1
@@ -75,3 +75,7 @@
 - Now you can get the anime list!
 - Change the app icon.
 - In the future you will be able to add anime and manga to favorites.
+
+## v2.1.0
+- Repetitive code is eliminated and code is lightened.
+- The API search does not work at the moment.

@@ -14,13 +14,10 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.mangaapp.R;
-import com.example.mangaapp.adapter.AnimeListAdapter;
-import com.example.mangaapp.adapter.MangaListAdapter;
-import com.example.mangaapp.api.AnimeResponse;
+import com.example.mangaapp.adapter.AniMangaListAdapter;
+import com.example.mangaapp.api.AniMangaResponse;
 import com.example.mangaapp.api.KitsuService;
-import com.example.mangaapp.api.MangaResponse;
-import com.example.mangaapp.models.anime.Anime;
-import com.example.mangaapp.models.manga.Manga;
+import com.example.mangaapp.models.AniManga;
 import com.example.mangaapp.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
@@ -47,19 +44,14 @@ public class MainActivity extends AppCompatActivity {
 
     final static int limit = 20; //Constant
 
-    //Only Manga
-    private MangaListAdapter mangaListAdapter; //Is in charge of managing the Adapter
+    private int option;
 
-    private MangaResponse mangaResponse; //It is in charge of handling the API response
+    //For all
+    private AniMangaListAdapter aniMangaListAdapter;
 
-    private ArrayList<Manga> mangaList; //Stores the list of mangas
+    private AniMangaResponse aniMangaResponse;
 
-    //only Anime
-    private AnimeListAdapter animeListAdapter; //Is in charge of managing the Adapter
-
-    private AnimeResponse animeResponse; //It is in charge of handling the API response
-
-    private ArrayList<Anime> animeList; //Stores the list of mangas
+    private ArrayList<AniManga> aniMangaList;
 
 
     @Override
@@ -67,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int option = getIntent().getIntExtra(getString(R.string.Option), defaultValue);
+        option = getIntent().getIntExtra(getString(R.string.Option), defaultValue);
         recyclerView = findViewById(R.id.recyclerView); //We relate the variable to the container of the graphic view
         //We configure the RecyclerView
         recyclerView.setHasFixedSize(true);
@@ -75,20 +67,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        switch (option){
-            case 0:
-                //We initialize the adapter handler
-                mangaListAdapter = new MangaListAdapter(this);
-                recyclerView.setAdapter(mangaListAdapter);
 
-                break;
-            case 1:
-                animeListAdapter = new AnimeListAdapter(this);
-                recyclerView.setAdapter(animeListAdapter);
-                break;
-            case 2:
-                Toast.makeText(this, "Estás en la lista de favoritos", Toast.LENGTH_SHORT).show();
-                break;
+        if(option != 2){
+            aniMangaListAdapter = new AniMangaListAdapter(this, option);
+            recyclerView.setAdapter(aniMangaListAdapter);
+        }else{
+            Toast.makeText(this, "Estás en la lista de favoritos", Toast.LENGTH_SHORT).show();
         }
 
         //This method will take care of showing new elements every time we reach the end of the list
@@ -108,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                                 getList(offset, option);
                             }else{
                                 offsetSearch += 20;
-                                search(query);
+                                //search(query);
                             }
                         }
                     }
@@ -117,64 +101,38 @@ public class MainActivity extends AppCompatActivity {
         });
         fitToLoad = true;
         getList(offset, option);
-
-
     }
 
     //This method will be in charge of making the request to the API and will show the results
     private void getList(int offset, int option){
         KitsuService kitsuService = RetrofitClient.getClient(this).create(KitsuService.class);
-        switch (option){
-            case 0: //Manga
-                Call<MangaResponse> mangaResponseCall = kitsuService.getMangaList(limit, offset);
-                mangaResponseCall.enqueue(new Callback<MangaResponse>() {
-                    @Override
-                    public void onResponse(Call<MangaResponse> call, Response<MangaResponse> response) {
-                        fitToLoad = true;
-                        if(response.isSuccessful()){
-                            mangaResponse = response.body();
-                            mangaList = mangaResponse.getData();
-                            mangaListAdapter.addMangaList(mangaList);
-                            flag = 0;
-                        }else{
-                            Toast.makeText(getApplicationContext(), getString(R.string.onRespone) + response.errorBody(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
+        Call<AniMangaResponse> aniMangaResponseCall;
 
-                    @Override
-                    public void onFailure(Call<MangaResponse> call, Throwable t) {
-                        fitToLoad = true;
-                        Toast.makeText(getApplicationContext(), getString(R.string.onFailure) + t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-                break;
-            case 1: //Anime
-                Call<AnimeResponse> animeResponseCall = kitsuService.getAnimeList(limit, offset);
-                animeResponseCall.enqueue(new Callback<AnimeResponse>() {
-                    @Override
-                    public void onResponse(Call<AnimeResponse> call, Response<AnimeResponse> response) {
-                        fitToLoad = true;
-                        if(response.isSuccessful()){
-                            animeResponse = response.body();
-                            animeList = animeResponse.getData();
-                            animeListAdapter.addAnimeList(animeList);
-                            flag = 0;
-                        }else{
-                            Toast.makeText(getApplicationContext(), getString(R.string.onRespone) + response.errorBody(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<AnimeResponse> call, Throwable t) {
-                        fitToLoad = true;
-                        Toast.makeText(getApplicationContext(), getString(R.string.onFailure) + t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-                break;
-            default:
-                break;
+        if(option == 0){//Manga
+            aniMangaResponseCall = kitsuService.getMangaList(limit, offset);
+        }else{//Anime
+            aniMangaResponseCall = kitsuService.getAnimeList(limit, offset);
         }
 
+        aniMangaResponseCall.enqueue(new Callback<AniMangaResponse>() {
+            @Override
+            public void onResponse(Call<AniMangaResponse> call, Response<AniMangaResponse> response) {
+                fitToLoad = true;
+                if(response.isSuccessful()){
+                    aniMangaResponse = response.body();
+                    aniMangaList = aniMangaResponse.getData();
+                    aniMangaListAdapter.addList(aniMangaList);
+                    flag = 0;
+                }else{
+                    Toast.makeText(getApplicationContext(), getString(R.string.onRespone) + response.errorBody(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<AniMangaResponse> call, Throwable t) {
+                fitToLoad = true;
+                Toast.makeText(getApplicationContext(), getString(R.string.onFailure) + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     //This method will be in charge of adding the search button in the toolbar and performing the searches
@@ -190,14 +148,14 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                mangaListAdapter.resetMangaList();
+                aniMangaListAdapter.resetList();
                 offsetSearch = 0;
-                search(query);
+                //search(query);
                 return true;
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-                mangaListAdapter.getFilter().filter(newText);
+                aniMangaListAdapter.getFilter().filter(newText);
                 flag = 0;
                 return true;
             }
@@ -205,29 +163,36 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    /*
     //This method will handle the search when the user sends the request
     private void search(String queryLocal) {
         query = queryLocal;
         KitsuService kitsuService = RetrofitClient.getClient(this).create(KitsuService.class);
-        Call<MangaResponse> mangaResponseCall = kitsuService.getSearchManga(queryLocal, 20, offsetSearch);
-        mangaResponseCall.enqueue(new Callback<MangaResponse>() {
+        Call<AniMangaResponse> aniMangaResponseCall;
+        if(option == 0){ //Manga
+            aniMangaResponseCall  = kitsuService.getSearchManga(queryLocal, 20, offsetSearch);
+        }else{//Anime
+            aniMangaResponseCall = kitsuService.getSearchAnime(queryLocal, 20, offsetSearch);
+        }
+        aniMangaResponseCall.enqueue(new Callback<AniMangaResponse>() {
             @Override
-            public void onResponse(Call<MangaResponse> call, Response<MangaResponse> response) {
+            public void onResponse(Call<AniMangaResponse> call, Response<AniMangaResponse> response) {
                 fitToLoad = true;
                 if(response.isSuccessful()){
-                    mangaResponse = response.body();
-                    ArrayList<Manga> list = mangaResponse.getData();
-                    mangaListAdapter.addMangaList(list);
+                    aniMangaResponse = response.body();
+                    ArrayList<AniManga> list = aniMangaResponse.getData();
+                    AniMangaListAdapter.addListSearch(list);
                     flag = 1;
                 }else{
                     Toast.makeText(getApplicationContext(), getString(R.string.onRespone) + response.errorBody(), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(Call<MangaResponse> call, Throwable t) {
+            public void onFailure(Call<AniMangaResponse> call, Throwable t) {
                 fitToLoad = true;
                 Toast.makeText(getApplicationContext(), getString(R.string.onFailure) + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 }

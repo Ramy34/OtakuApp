@@ -1,4 +1,4 @@
-package com.example.mangaapp.models.generic;
+package com.example.mangaapp.models;
 
 public class LinkSelf {
     private String self;

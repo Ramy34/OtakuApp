@@ -1,24 +1,20 @@
-package com.example.mangaapp.models.anime;
+package com.example.mangaapp.models;
 
-import com.example.mangaapp.models.generic.Links;
-
-public class AnimeRelationships {
+public class Relationships {
     private Links genres;
     private Links categories;
-    private Links casting;
+    private Links castings;
     private Links installments;
-    private Links mapping;
+    private Links mappings;
     private Links reviews;
     private Links mediaRelationships;
     private Links characters;
     private Links staff;
     private Links productions;
     private Links quotes;
-    private Links episode;
-    private Links streamingLinks;
-    private Links animeProductions;
-    private Links animeCharacters;
-    private Links animeStaff;
+    private Links chapters;
+    private Links mangaCharacters;
+    private Links mangaStaff;
 
     public Links getGenres() {
         return genres;
@@ -36,12 +32,12 @@ public class AnimeRelationships {
         this.categories = categories;
     }
 
-    public Links getCasting() {
-        return casting;
+    public Links getCastings() {
+        return castings;
     }
 
-    public void setCasting(Links casting) {
-        this.casting = casting;
+    public void setCastings(Links castings) {
+        this.castings = castings;
     }
 
     public Links getInstallments() {
@@ -52,12 +48,12 @@ public class AnimeRelationships {
         this.installments = installments;
     }
 
-    public Links getMapping() {
-        return mapping;
+    public Links getMappings() {
+        return mappings;
     }
 
-    public void setMapping(Links mapping) {
-        this.mapping = mapping;
+    public void setMappings(Links mappings) {
+        this.mappings = mappings;
     }
 
     public Links getReviews() {
@@ -108,43 +104,27 @@ public class AnimeRelationships {
         this.quotes = quotes;
     }
 
-    public Links getEpisode() {
-        return episode;
+    public Links getChapters() {
+        return chapters;
     }
 
-    public void setEpisode(Links episode) {
-        this.episode = episode;
+    public void setChapters(Links chapters) {
+        this.chapters = chapters;
     }
 
-    public Links getStreamingLinks() {
-        return streamingLinks;
+    public Links getMangaCharacters() {
+        return mangaCharacters;
     }
 
-    public void setStreamingLinks(Links streamingLinks) {
-        this.streamingLinks = streamingLinks;
+    public void setMangaCharacters(Links mangaCharacters) {
+        this.mangaCharacters = mangaCharacters;
     }
 
-    public Links getAnimeProductions() {
-        return animeProductions;
+    public Links getMangaStaff() {
+        return mangaStaff;
     }
 
-    public void setAnimeProductions(Links animeProductions) {
-        this.animeProductions = animeProductions;
-    }
-
-    public Links getAnimeCharacters() {
-        return animeCharacters;
-    }
-
-    public void setAnimeCharacters(Links animeCharacters) {
-        this.animeCharacters = animeCharacters;
-    }
-
-    public Links getAnimeStaff() {
-        return animeStaff;
-    }
-
-    public void setAnimeStaff(Links animeStaff) {
-        this.animeStaff = animeStaff;
+    public void setMangaStaff(Links mangaStaff) {
+        this.mangaStaff = mangaStaff;
     }
 }

@@ -9,14 +9,14 @@ import retrofit2.http.Query;
 public interface KitsuService {
 
     @GET("manga")
-    Call<MangaResponse> getMangaList(@Query("page[limit]") int limit, @Query("page[offset]") int offset);
+    Call<AniMangaResponse> getMangaList(@Query("page[limit]") int limit, @Query("page[offset]") int offset);
 
     @GET("manga?filter")
-    Call<MangaResponse> getSearchManga(@Query("filter[text]") String text, @Query("page[limit]") int limit, @Query("page[offset]") int offset);
+    Call<AniMangaResponse> getSearchManga(@Query("filter[text]") String text, @Query("page[limit]") int limit, @Query("page[offset]") int offset);
 
     @GET("anime")
-    Call<AnimeResponse> getAnimeList(@Query("page[limit]") int limit, @Query("page[offset]") int offset);
+    Call<AniMangaResponse> getAnimeList(@Query("page[limit]") int limit, @Query("page[offset]") int offset);
 
     @GET("anime?filter")
-    Call<AnimeResponse> getSearchAnime(@Query("filter[text]") String text, @Query("page[limit]") int limit, @Query("page[offset]") int offset);
+    Call<AniMangaResponse> getSearchAnime(@Query("filter[text]") String text, @Query("page[limit]") int limit, @Query("page[offset]") int offset);
 }
