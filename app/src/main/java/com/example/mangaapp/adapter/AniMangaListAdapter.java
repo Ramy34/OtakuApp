@@ -23,16 +23,13 @@ import java.util.ArrayList;
 
 public class AniMangaListAdapter extends RecyclerView.Adapter<AniMangaListAdapter.ViewHolder> implements Filterable {
 
-    private int option;
     private final ArrayList<AniManga> aniMangaList;
     private ArrayList<AniManga> filteredAniMangaList;
     private final Context context;
-    private String url_img;
 
     //Constructor
-    public AniMangaListAdapter(Context context, int option) {
+    public AniMangaListAdapter(Context context) {
         this.context = context;
-        this.option = option;
         aniMangaList = new ArrayList<>();
         this.filteredAniMangaList = this.aniMangaList;
     }

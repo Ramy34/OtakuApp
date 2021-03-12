@@ -67,13 +67,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-
-        if(option != 2){
-            aniMangaListAdapter = new AniMangaListAdapter(this, option);
-            recyclerView.setAdapter(aniMangaListAdapter);
-        }else{
-            Toast.makeText(this, "Estás en la lista de favoritos", Toast.LENGTH_SHORT).show();
-        }
+        aniMangaListAdapter = new AniMangaListAdapter(this);
+        recyclerView.setAdapter(aniMangaListAdapter);
 
         //This method will take care of showing new elements every time we reach the end of the list
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
