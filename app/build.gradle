@@ -5,7 +5,7 @@ plugins {
 android {
     signingConfigs {
         OtakuApp {
-            storeFile file('D:\\Descargas\\OtakuAppKey.jks')
+            storeFile file('D:\\Programas\\AndroidKeys\\OtakuAppKey.jks')
             keyPassword 'yugioh5ds'
             storePassword 'yugioh5ds'
             keyAlias 'OtakuAppKey'
@@ -19,7 +19,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 2
-        versionName "2.3.3"
+        versionName "2.3.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.OtakuApp
