@@ -101,3 +101,6 @@
 
 ### v2.3.3
 - Minor fixes.
+
+### v2.3.4
+- Minor fixes.
