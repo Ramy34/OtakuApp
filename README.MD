@@ -1,106 +1,37 @@
-# MangaApp
-##### Application for manga fans
+# OtakuApp (MangaApp)
 
-## Features
+An Android application designed for anime and manga enthusiasts, powered by the [Kitsu API](https://kitsu.docs.apiary.io/).
 
-- Application that lists all the manga in the Kitsu API.
-- Clicking on an item shows more detailed information about it.
-- It has a search entry.
-- Youtube links redirect to the native app (only in Anime).
+## 🚀 Features
 
-## Version History
+- **Comprehensive Catalog:** Browse through an extensive list of manga and anime fetched directly from the Kitsu API.
+- **Detailed Views:** Tap on any manga or anime to view detailed information, including covers and descriptions.
+- **Search Functionality:** Easily find your favorite anime or manga using the built-in API-based search feature.
+- **YouTube Integration:** Watch anime trailers seamlessly with native YouTube app redirection.
+- **Responsive Design:** Optimized for both phones and tablets with custom wallpapers.
+- **Interactive UI:** Full-screen image viewing when tapping covers in the detail section.
 
-### V0.1.0
-- Project creation.
+## 🛠️ Tech Stack
 
-### V0.1.1
-- The readme is attached.
+- **Platform:** Android (Java)
+- **Networking:** [Retrofit2](https://square.github.io/retrofit/) & GsonConverterFactory for API communication.
+- **API:** Kitsu API
 
-### v0.1.2
-- The necessary dependencies for the management of the Api are added.
+## 📈 Version History (Highlights)
 
-### v0.2.0
-- Internet permissions are granted.
-- Models are created for the attributes of the manga.
-- The request to the Api is made (at the moment it only shows the names of the first 10 in the console).
+*(For a complete version history, please check the commit logs)*
 
-### v0.3.0
-- Work begins on the graphic part.
+### v2.0.0+ (Latest Major Updates)
+- **v2.3.0 - v2.3.4:** Tablet support, custom wallpapers, and stability fixes.
+- **v2.2.0:** Native YouTube app redirection for anime trailers.
+- **v2.1.0:** Code refactoring and API search improvements.
+- **v2.0.0:** Introduced Anime catalog, updated app icon.
 
-### v0.4.0
-- Manga covers and their names are shown.
+### v1.0.0 - v1.3.1
+- Implemented API-based search.
+- Full-screen image viewing in dedicated activities.
+- UI polish and hardcoded data removal.
 
-### v0.4.1
-- Minimal details.
-
-### v0.5.0
-- The entire list of available mangas is displayed.
-
-### v0.5.1
-- Minimal details.
-
-### v0.5.2
-- The connection is made with another activity.
-
-### v0.5.3
-- The connection with another activity is correctly terminated.
-
-## v1.0.0
-- Functional app, search module missing.
-
-### v1.0.1
-- Search icon is added in the toolbar (Not working yet).
-
-### v1.1.0
-- Searchable with loaded items.
-
-### v1.2.0
-- Api-based search.
-
-### v1.2.1
-- Minor fixes.
-
-### v1.2.2
-- Icon change.
-- minor fixes.
-
-### v1.3.0
-- When the manga image is touched in the information section it opens in another activity.
-
-### v1.3.1
-- Parts of the code are commented.
-- The hardcode is removed.
-
-## v2.0.0
-- Now you can get the anime list!
-- Change the app icon.
-- In the future you will be able to add anime and manga to favorites.
-
-### v2.1.0
-- Repetitive code is eliminated and code is lightened.
-- The API search does not work at the moment.
-
-### v2.1.1
-- Api search is fixed.
-
-### v2.2.0
-- You can play the anime trailers in the native YouTube app.
-
-### v2.2.1
-- Minor fixes.
-
-### v2.3.0
-- View for tablets is added.
-- Phone and tablet wallpapers are added.
-
-### v2.3.1
-- Minor fixes.
-
-### v2.3.2
-- Minor fixes.
-
-### v2.3.3
-- Minor fixes.
-
-### v2.3.4
-- Minor fixes.
+### v0.1.0 - v0.5.3
+- Initial project setup and Kitsu API integration.
+- Established data models and basic list/detail views.
